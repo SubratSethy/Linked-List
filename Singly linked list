@@ -1,13 +1,13 @@
 #include<iostream>
 #include<map>
 using namespace std;
-// 
+//implementation of node.
 class Node {
 
     public:
     int data;
     Node* next;
-
+//as node contains data value and address of next node i.e; pointer
     //constructor
     Node(int data) {
         this -> data = data;
@@ -33,13 +33,17 @@ void insertAtHead(Node* &head, int d) {
     Node* temp = new Node(d);
     temp -> next = head;
     head = temp;
+//head pointer points to first node.
 }
 
 void insertAtTail(Node* &tail, int d) {
      // new node create
     Node* temp = new Node(d);
+//Node is the name of the class.
+//by using object method or create node object,temp is name of the node. 
     tail -> next = temp;
     tail  = temp;
+//first tail is a pointer which is pointing to last node i.e; tail = last node ,here we created a node insert at tail so tail or last node will point to new node . 
 }
 
 void print(Node* &head) {
@@ -65,13 +69,14 @@ void insertAtPosition(Node* &tail, Node* & head, int position, int d) {
         insertAtHead(head, d);
         return;
     }
-
+//first have to traverse to n-1 position so we create a temp node at postion =1.
     Node* temp  = head;
     int cnt = 1;
-
+    
     while(cnt < position-1) {
         temp = temp->next;
         cnt++;
+// here we traverse to n-1 position
     }
 
     //inserting at Last Position
@@ -81,11 +86,13 @@ void insertAtPosition(Node* &tail, Node* & head, int position, int d) {
     }
 
     //creating a node for d
+// new node that is to be inserted at given position.
     Node* nodeToInsert = new Node(d);
 
     nodeToInsert -> next = temp -> next;
 
     temp -> next = nodeToInsert;
+//temp is at n-1 position.
 }
 
 void deleteNode(int position, Node* & head) { 
